@@ -1,7 +1,7 @@
 library(RMySQL)
 library(lubridate)
 library(reshape2)
-
+library(Hmisc)
 
 
 #TODO:
@@ -38,18 +38,55 @@ panel.set <- merge(info.set, survey.data.out, by = c("PrimaryEmail"))
 panel.set$date <- ymd(Sys.Date())
 panel.set$month <- month(panel.set$date)
 panel.set$year  <- year(panel.set$date)
+panel.set <- data.frame(panel.set)
+
+panel.set <- panel.set[,wbc.archive.order]
 
 #Output new load data set
 
-#dbWriteTable(con , "wbc_load_table", panel.set, overwrite = TRUE, row.names = FALSE)
-#dbSendQuery(con, 'INSERT IGNORE INTO wbc_archive SELECT * FROM wbc_load_table')
+dbWriteTable(con , "wbc_load_table_test", panel.set, overwrite = TRUE, row.names = FALSE)
+dbSendQuery(con, 'INSERT IGNORE INTO wbc_archive_test SELECT * FROM wbc_load_table_test')
+
+
 
 
 ####################################################################################################
 # Function Descriptions here
 
 
-wbc.archive <- wbc.archive <- dbGetQuery(con, "SELECT 
+specify_decimal <- function(x, k) format(round(x, k), nsmall=k)
+
+
+
+###############################################
+# Pull out two needed data sets for following cleanup
+wbc.panel.path <- file.path(cwd, "data","wbc_panelists_pull.csv")
+wbc.panelists <- read.csv(wbc.panel.path)
+wbc.panelists.v1 <- subset(wbc.panelists, select = c(Email,
+                                                     Organization,
+                                                     Arizona,
+                                                     California,
+                                                     Colorado,
+                                                     Idaho,
+                                                     Montana,
+                                                     Nevada,
+                                                     New.Mexico,
+                                                     Oregon,
+                                                     Texas,
+                                                     Utah,
+                                                     Washington,
+                                                     Wyoming))
+
+len <- length(names(wbc.panelists.v1))
+
+names(wbc.panelists.v1)[3:len] <- 
+  tolower(as.character(names(wbc.panelists.v1)[3:len]))
+names(wbc.panelists.v1)[names(wbc.panelists.v1) == "Email"] <- "PrimaryEmail"
+
+
+#############
+# 2nd dataset
+wbc.archive <- dbGetQuery(con, "SELECT 
         FirstName,
         LastName,
         PrimaryEmail,
@@ -73,10 +110,11 @@ wbc.archive <- wbc.archive <- dbGetQuery(con, "SELECT
       FROM wbc_archive;")
 
 
-generateImportPanel <- function()
-{
+####################################################################################################
 
-    
+# generateImportPanel <- function()
+# {
+
     wbc.archive$States <- tolower(wbc.archive$States)
     wbc.archive$States <- capitalize(wbc.archive$States)
     wbc.archive$date <- mdy(wbc.archive$date)
@@ -153,11 +191,15 @@ generateImportPanel <- function()
     #Output panel here
 
     
-}
+#}
 
 
-generateConsensusPanel <- function()
-{
+
+
+
+
+# generateConsensusPanel <- function()
+# {
   
       data.columns <- c("Q1A1",
                         "Q2A1_ggr",
@@ -220,9 +262,34 @@ generateConsensusPanel <- function()
       #dbWriteTable(con, "wbc_consensus", consensus, overwrite = TRUE, row.names = FALSE)
       #dbSendQuery(con, 'INSERT INTO wbc_old_archive ')
       
-}
+# }
 
 
+####################################################################################################
+# I should be able to take the archive and consensus table now, from the DB (that I just inserted)
+# and create the deployment table
 
+# generateDeploymentTable <- function()
+# {
 
+import.panel <- as.data.frame(import.panel)
+wbc.deployment       <- import.panel[deployment.table.names]
+wbc.deployment[data.columns] <- sapply(wbc.deployment[data.columns], as.numeric)
+wbc.deployment[data.columns] <- sapply(wbc.deployment[data.columns], function(x){specify_decimal(x, 1)})
+
+consensus.deployment <- consensus[deployment.table.names]
+
+wbc.deployment <- rbind(wbc.deployment, consensus.deployment) 
+#wbc.deployment[which(wbc.deployment[data.columns] == " NA"),data.columns] <- ""
+cleaned.data.columns <- sapply(wbc.deployment[,data.columns], function(x){
+  gsub(" NA|NaN|  NaN","",x)
+  #wbc.deployment[grepl("(?i)na", x) == "TRUE",] <- ""
+})
+
+wbc.deployment.v2 <- wbc.deployment
+wbc.deployment.v2[,data.columns] <- cleaned.data.columns
+
+#dbWriteTable(con, "wbc_deployment", wbc.deployment.v2, row.names = FALSE, overwrite = TRUE)
+
+#}
 

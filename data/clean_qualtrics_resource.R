@@ -212,3 +212,49 @@ questions.new <- c(  "Q1A1",
                      "Q5A2",
                      "Q2A2_ggr",
                      "Q2A2_mfg")
+
+
+wbc.archive.order <- c("FirstName",
+						"LastName",
+						"PrimaryEmail",
+						"States",
+						"Organization",
+						"comments",
+						"Q1A1",
+						"Q1A2",
+						"Q2A1",
+						"Q2A2",
+						"Q3A1",
+						"Q3A2",
+						"Q4A1",
+						"Q4A2",
+						"Q5A1",
+						"Q5A2",
+						"Q2A1_ggr",
+						"Q2A2_ggr",
+						"Q2A1_mfg",
+						"Q2A2_mfg",
+						"date",
+						"month",
+						"year")
+
+
+
+deployment.table.names <- c(
+  "States",
+  "Organization",
+  "Q1A1",
+  "Q2A1_ggr",
+  "Q4A1",
+  "Q2A1",
+  "Q5A1",
+  "Q3A1",
+  "Q1A2",
+  "Q2A2_ggr",
+  "Q4A2",
+  "Q2A2",
+  "Q5A2",
+  "Q3A2",
+  "Q2A1_mfg",
+  "Q2A2_mfg")
+

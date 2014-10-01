@@ -1,0 +1,63 @@
+RecipientID,FirstName,LastName,Email,ExternalDataReference,Unsubscribed,Language,Organization,Arizona,California,Colorado,Idaho,Montana,Nevada,New.Mexico,Oregon,Texas,Utah,Washington,Wyoming,num_states,Q1A1,Q2A1,Q3A1,Q4A1,Q5A1,Q1A2,Q2A2,Q3A2,Q4A2,Q5A2
+MLRP_0TBxAfJbXXv3bud,Mark,Vitner,mark.vitner@wellsfargo.com,,0,,Wells Fargo,1,1,1,1,1,1,1,1,1,1,1,1,12,,,,,,,,,,
+MLRP_0HcZnfWC2GzmtkF,David,Hemley,david.hemley@enmu.edu,,0,,Eastern New Mexico University,0,0,1,0,0,0,1,0,1,0,0,0,3,4.96,3.6,1.8,1.4,15.1,,,,,
+MLRP_eG5Gey465JGEBHT,Esmael,Adibi,adibi@chapman.edu,,0,,Chapman University,0,1,0,0,0,0,0,0,0,0,0,0,1,5.1,5.9,2.6,1,17.8,,,,,
+MLRP_6mpgxJBG4Bl1gSV,Bret,Bertolin,bretb@dor.wa.gov,,0,,Office of the Forecast Council,0,0,0,0,0,0,0,0,0,0,1,0,1,4.7,4.3,2,1,11.5,5.3,4.8,2.1,1,18.4
+MLRP_0Mp5Wg0c74XldMp,Brian,Cary,Brian.Cary@srpnet.com,,0,,Salt River Project,1,0,0,0,0,0,0,0,0,0,0,0,1,5.2,5.8,3.3,1.6,25,,,,,
+MLRP_9RoyboqCSDcqFsV,Jamie,Cattanach,jamie.cattanach@swgas.com,,0,,Southwest Gas Corporation,0,0,0,0,0,1,0,0,0,0,0,0,1,2.7,2.7,2.5,2,13,3,3,2.6,2.2,10
+MLRP_72F9r6OpmEIJ47r,Dick,Conway,dickconway@cs.com,,0,,Conway Pederson Economics,0,0,0,0,0,0,0,0,0,0,1,0,1,5.5,5.7,2.3,1.4,21.7,,,,,
+MLRP_1ZcxUvtMllGaKLH,Dwight,Duncan,dwight@econlit.net,,0,,EconLit LLC,1,0,0,0,0,0,0,0,0,0,0,0,1,5.7,5.4,2.4,1.3,30,6.2,5.7,3.1,1.7,35
+MLRP_e2lM3dyMjx8bSvj,Pete,Ewen,Peter.Ewen@pinnaclewest.com,,0,,Arizona Public Service,1,0,0,0,0,0,0,0,0,0,0,0,1,4.7,5.5,4.5,2,50,5,5.7,4.5,2.5,125
+MLRP_eYdJXMArtPJgqO1,Dennis,Foster,dennis.foster@nau.edu,,0,,NAU - BBER,1,0,0,0,0,0,0,0,0,0,0,0,1,6.5,4.8,3,1.8,20,6,5,2.2,1.4,10
+MLRP_b9MVKICbnOTC93n,Tom,Fullerton,tomf@utep.edu,,0,,Univserity of Texas at El Paso,0,0,0,0,0,0,0,0,1,0,0,0,1,6,6,2.2,1.7,15,6.2,6.2,2.3,1.7,17.5
+MLRP_egJQ8x0ffdnBEvH,Neal,Helm,nhelm@dadco.com,,0,,Davidson Fixed Income Management,1,0,0,0,0,0,0,0,0,0,0,0,1,6,5.4,2.4,1.3,20,6.5,6.1,2.8,1.3,30
+MLRP_9N3uUWlRv2usHeB,Mark,Knold,mknold@utah.gov,,0,,Utah Department of Workforce Services,0,0,0,0,0,0,0,0,0,1,0,0,1,6.1,5.4,3.1,1.7,7.4,4.9,4.6,3,1.7,20.7
+MLRP_eLfIPe3Vyt7l8ot,John,Lucking,JLucking@gmail.com,,0,,ECON-LINC,1,0,0,0,0,0,0,0,0,0,0,0,1,5.2,5.3,3,1.6,24,5.3,5.4,3.3,1.8,25
+MLRP_1MS7dkYygfSC1g1,Alan,Maguire,alan@aemaguire.com,,0,,The Maguire Company,1,0,0,0,0,0,0,0,0,0,0,0,1,6,4.8,3,1.8,20,,,,,
+MLRP_8GsEtyAg7chdmVD,Ham,Nguyen,ham.nguyen@pgn.com,,0,,Portland General Electric,0,0,0,0,0,0,0,1,0,0,0,0,1,5.5,2.3,3,1.4,25,,,,,
+MLRP_bft5RAMDbeolVch,Jerry,Nickelsburg,patricia.nomura@anderson.ucla.edu,,0,,UCLA - Business Forecasting Project,0,1,0,0,0,0,0,0,0,0,0,0,1,5.3,3.8,1.8,0.8,30.6,5.7,4.5,2.2,0.9,16.6
+MLRP_40inSDEat9Ri7Kl,Ray,Perryman,sheila@perrymangroup.com,,0,,Perryman Group,0,0,0,0,0,0,0,0,1,0,0,0,1,5.9,7,2.5,1.7,10.3,6.7,7.2,2.4,1.7,8.1
+MLRP_8J8b1XtqrB58cfP,Keith,Phillips,keith.r.phillips@dal.frb.org,,0,,Federal Reserve Bank of Dallas,0,0,0,0,0,0,0,0,1,0,0,0,1,6,7,2.5,1.8,10,6.3,7,2.3,1.7,8
+MLRP_6heVcy0PImIiHLT,Elliot,Pollack,pollack@edpco.com,,0,,Elliot D. Pollack & Co.,1,0,0,0,0,0,0,0,0,0,0,0,1,5,5,3,1.7,17,5,5,3.5,1.9,21
+MLRP_5d8ekBIJ13adpWJ,John,Restrepo,jrestrepo@rcg1.com,,0,,RCG Economics,0,0,0,0,0,1,0,0,0,0,0,0,1,3,1,1.9,1.5,12,3,0.5,1.5,1.4,13
+MLRP_bxCPQyn4tf8N4MJ,Debra,Roubik,droubik@cox.net,,0,,VisionEcon/Governing Star Group,1,0,0,0,0,0,0,0,0,0,0,0,1,3.2,3.1,1.9,1.7,7.7,,,,,
+MLRP_cOaTdQmOngOEiu9,Tim,Sheesley,Tim.Sheesley@XCELENERGY.COM,,0,,Xcel Energy,0,0,1,0,0,0,0,0,0,0,0,0,1,5,6,2.3,1.7,25,,,,,
+MLRP_d5aTE0APKJTeRsV,Stephen,Taddie,staddie@stellarmgt.com,,0,,Stellar Capital Management,1,0,0,0,0,0,0,0,0,0,0,0,1,5.7,6,2.8,1.4,25,6.1,7.5,3.3,1.5,27
+MLRP_dhBDKWTMCv9w4gl,Mark,Thompson,mark@forecon.com,,0,,Forefront Economics,0,0,0,0,0,0,0,1,0,0,0,0,1,4.5,1.5,2.7,0.9,18,,,,,
+MLRP_3zbF21m6psIctrn,Richard,Wobbekind,Richard.Wobbekind@Colorado.EDU,,0,,University of Colorado - Leeds,0,0,1,0,0,0,0,0,0,0,0,0,1,5.9,5.7,2.5,1.6,15,7,6.3,3,1.6,20
+MLRP_eM5EEwG1f9yEWhL,Aruna,Murthy,aruna.murthy@azdoa.gov,,0,,Arizona Department of Administration,1,0,0,0,0,0,0,0,0,0,0,0,1,3.4,7.2,2.3,1.2,17,,,,,
+MLRP_cIua4YvalodPZMF,Jack,York,Jack.york@azdoa.gov,,0,,Arizona Department of Administration,1,0,0,0,0,0,0,0,0,0,0,0,1,3.4,7.2,2.3,1.2,17,,,,,
+MLRP_43lyZFGtHSnFb9P,Daniel,Bache,Daniel.Bache@azdoa.gov,,0,,Arizona Department of Administration,1,0,0,0,0,0,0,0,0,0,0,0,1,3.4,7.2,2.3,1.2,17,,,,,
+MLRP_b79Nj3sQEDrZpRj,Patrick,Lowe,Patrick.lowe@aps.com,,0,,Arizona Public Service,1,0,0,0,0,0,0,0,0,0,0,0,1,4.7,5.5,4.5,2,50,5,5.7,4.5,2.5,125
+MLRP_3ZSvqDlqYAgwy4R,#NAME,#NAME,rounds@edpco.com,,0,,Elliot D. Pollack & Co.,1,0,0,0,0,0,0,0,0,0,0,0,1,5,5,3,1.7,17,5,5,3.5,1.9,21
+MLRP_3JGZPsrpFJ6r02h,Jill,Welch,welch@edpco.com,,0,,Elliot D. Pollack & Co.,1,0,0,0,0,0,0,0,0,0,0,0,1,5,5,3,1.7,17,5,5,3.5,1.9,21
+MLRP_2lzKlpnSGnbLrAV,#NAME,#NAME,holofsson@azleg.gov,,0,,Joint Legislative Budget Committee,1,0,0,0,0,0,0,0,0,0,0,0,1,5.4,5.4,2.4,1.3,18,5.8,5.8,2.9,1.8,33
+MLRP_0UjhM078W0zGhiR,George,Hammand,ghammond@email.arizona.edu,,0,,UA - Eller College,1,0,0,0,0,0,0,0,0,0,0,0,1,4.9,3.6,2.5,1.4,19.1,6,6,3.4,1.8,63.2
+MLRP_6VfPXLTCpu1tf1j,Irena,Asmundson,irena.asmundson@dof.ca.gov,,0,,California Department of Finance,0,1,0,0,0,0,0,0,0,0,0,0,1,4.6,7.5,2.3,0.8,53.9,5,,2.3,0.9,19.9
+MLRP_8BWlYlRr0g0OMLz,Justin,Garosi,justin.garosi@lao.ca.gov,,0,,Legislative Analyst's Office,0,1,0,0,0,0,0,0,0,0,0,0,1,5.9,6.1,2.5,1.1,45.1,,,,,
+MLRP_bHHVXYa7XOfZsYR,Robert,Kleinhenz,robert.kleinhenz@laedc.org,,0,,LA County Economic Development Corp.,0,1,0,0,0,0,0,0,0,0,0,0,1,4.7,3.8,1.8,0.9,42,5,4.5,1.8,1,45
+MLRP_1G4FDLFj6kTHlCl,Univserity of Pacific,University of Pacific,forecast@pacific.edu,,0,,University of the Pacific,0,1,0,0,0,0,0,0,0,0,0,0,1,5.2,3,1.8,1,62,,,,,
+MLRP_8piTezNqZuHQYzX,Yasuo,Nishiyama,yasuo.nishiyama@woodbury.edu,,0,,Woodbury University,0,1,0,0,0,0,0,0,0,0,0,0,1,5,5,2.3,0.9,35,4.9,4.9,2.2,0.9,35
+MLRP_78vgAOrUnJKNg21,Natalie,Mullis,natalie.mullis@state.co.us,,0,,Colorado Legislative Council,0,0,1,0,0,0,0,0,0,0,0,0,1,5.6,5.9,2.6,1.7,13.6,5.9,6,2.8,1.7,22.5
+MLRP_9SOejgT3mxesHf7,Nathaniel,Clayville,Nathaniel.clayville@dfm.idaho.gov,,0,,Idaho Divison of Financial Management,0,0,0,1,0,0,0,0,0,0,0,0,1,4.3,,2.6,1.5,26.8,5.4,,3.4,1.6,25.2
+MLRP_eKe3t5TZWDDKGH3,Patrick,Barkey,Patrick.Barkey@umontana.edu,,0,,University of Montana,0,0,0,0,1,0,0,0,0,0,0,0,1,,,,,,,,,,
+MLRP_733jBZB7pPQzdqJ,#NAME,#NAME,jahays@nvdetr.org,,0,,"Dept. of Employment, Training & Rehab.",0,0,0,0,0,1,0,0,0,0,0,0,1,2.8,2,1.8,,,,,,,
+MLRP_6sAwrzy6yOzRby5,RCG Economics,RCG Economics,bgoetting@rcg1.com,,0,,RCG Economics,0,0,0,0,0,1,0,0,0,0,0,0,1,3,1,1.9,1.5,12,3,0.5,1.5,1.4,13
+MLRP_dajl33NTFJ1l2f3,Brandy,Little,brandy.little@swgas.com,,0,,Southwest Gas Corporation,0,0,0,0,0,1,0,0,0,0,0,0,1,2.7,2.7,2.5,2,13,3,3,2.6,2.2,10
+MLRP_41PAMV8Gt2E4VVz,Stephen,Brown,Spa.Brown@unlv.edu,,0,,Univserity of Nevada at Las Vegas - CBER,0,0,0,0,0,1,0,0,0,0,0,0,1,3.6,0,3.2,2.2,14.5,3.7,0,3.4,2.3,10.5
+MLRP_bE07YMnloGRenA1,#NAME,#NAME,jeffm@unm.edu,,0,,University of New Mexico - BBER,0,0,0,0,0,0,1,0,0,0,0,0,1,5,1.4,1.7,,,,,,,
+MLRP_3simuvVA8aZWw85,Joshua,Lehner,joshua.lehner@state.or.us,,0,,Oregon Executive Department,0,0,0,0,0,0,0,1,0,0,0,0,1,4.5,2.6,2.2,1.1,10.1,5.4,2.5,2.4,1.1,23.6
+MLRP_4Vm8TDxkdKjtInH,Micheal,Cosgrove,mikecosgrove@econolast.com,,0,,Econolast,0,0,0,0,0,0,0,0,1,0,0,0,1,5.9,6.2,2.2,1.8,12.8,6,6.4,2.2,1.7,9.1
+MLRP_bw6Sgfck9MggoJL,Info,Info,info@perrymangroup.com,,0,,Perryman Group,0,0,0,0,0,0,0,0,1,0,0,0,1,5.9,7,2.5,1.7,10.3,6.7,7.2,2.4,1.7,8.1
+MLRP_b8BqJsFsjNPtHeZ,#NAME,#NAME,bweinstein@cox.smu.edu,,0,,Southern Methodist University,0,0,0,0,0,0,0,0,1,0,0,0,1,6.6,7.2,2.3,1.8,30,6.7,7.1,2.3,1.7,52
+MLRP_bPGJbZLN6tgBPlr,Chris,Dittmar,chris.dittmar@cpa.state.tx.us,,0,,TX State Comptroller of Public Accounts,0,0,0,0,0,0,0,0,1,0,0,0,1,4.4,4.1,1.9,1.7,8.3,,,,,
+MLRP_9S82JdBFQK0OLhH,#NAME,#NAME,cjmayne@utah.gov,,0,,Utah Department of Workforce Services,0,0,0,0,0,0,0,0,0,1,0,0,1,6.1,5.4,3.1,1.7,7.4,4.9,4.6,3,1.7,20.7
+MLRP_6zHcOOuiBvEwV1P,Nate,Curtis,nate.curtis@navigant.com,,0,,Navigant Consulting,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+MLRP_6JeHHqB2A0nwFtr,Tim,Binnings,tbinnings@comcast.net,,0,,Summit Economics,0,0,1,0,0,0,0,0,0,0,0,0,1,5,6,2.5,1.6,12,4,4.5,1.9,1.6,0
+MLRP_bdfyb07Io5RbjiR,Scott,Anderson,scott.a.anderson@wellsfargo.com,,0,,Wells Fargo,1,1,1,1,1,1,1,1,1,1,1,1,1,,,,,,,,,,
+MLRP_01dfj1Az238rUFv,Chris,Erickson,chrerick@nmsu.edu,,0,,New Mexico State University - CEMAF,0,0,0,0,0,0,1,0,0,0,0,0,1,2.5,-0.5,0.05,,,2,-0.5,1.5,,
+MLRP_6ujqsssx1YK4esR,Bill,Conerly,bill@conerlyconsulting.com,,0,,Conerly Consulting,0,0,0,0,0,0,0,1,0,0,1,0,2,1.5,1.5,1.5,1.5,1.5,1,1.5,1.5,1.5,1.5
+MLRP_0DN4nklVXAnAIip,Lee,McPheters,lee.mcpheters@asu.edu,,0,,ASU - Economic Outlook Center,1,0,0,0,0,0,0,0,0,0,0,0,1,2,2,2,2,2,3,3,3,3,3
+MLRP_cusqtCE2cy6hn9j,Wenlin,Liu,wenlin.liu@wyo.gov,,0,,WY Dept. of Administration & Information,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1
+MLRP_cT7CqUNnsTTN8vb,Robert,Row,rjrow@asu.edu,,0,,ASU - Economic Outlook Center,1,1,1,1,0,0,0,0,0,0,0,0,4,,,,,,,,,,
+,#NAME,#NAME,sprit61@cox.net,,,,Southwest Growth Partners,1,0,0,0,0,0,0,0,0,0,0,0,1,,,,,,,,,,

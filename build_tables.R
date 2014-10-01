@@ -77,6 +77,7 @@ data.v4 <- data.v3[!(is.na(data.v3[,4:17])),]
 ind <- apply(data.v4, 1, function(x) all(is.na(x)))
 data.v5 <- data.v4[!ind, ]
 data.v5$States <- NULL
+names(data.v5) <- gsub("comment","comments", names(data.v5))
 
 
 
