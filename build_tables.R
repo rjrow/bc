@@ -69,7 +69,11 @@ data.v2$variable <- NULL
 data.v3 <- dcast(data.v2, EmailAddress + states.data ~ question.data)
 
 
-#states.data <- states.data[grepl("_",states.data)]
-#answer.dataset.v2 <- cbind(survey.melt, states.data)
-#comments <- subset(survey.data, grepl("comments",variable))
+
+data.v4 <- data.v3[!(is.na(data.v3[,4:17])),]
+ind <- apply(data.v4, 1, function(x) all(is.na(x)))
+data.v5 <- data.v4[!ind, ]
+
+
+
 
