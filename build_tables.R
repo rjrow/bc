@@ -1,7 +1,4 @@
 
-
-
-
 library(reshape2)
 library(qdap)
 library(data.table)
@@ -16,8 +13,10 @@ cwd <- getwd()
 wbc.data.path <- file.path(cwd, "data","qualtrics_pull_wbc.csv")
 states.data.path <- file.path(cwd, "data","states.csv")
 resources.path <- file.path(cwd,"data","clean_qualtrics_resource.R")
+config.path <- file.path(cwd, "config.R")
 
 source(resources.path)
+source(config.path)
 
 data <- read.csv(wbc.data.path,skip = 1)
 states <- read.csv(states.data.path)

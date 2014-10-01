@@ -35,19 +35,31 @@ info.set <- unique(info.set)
 
 panel.set <- merge(info.set, survey.data.out, by = c("PrimaryEmail"))
 
-panel.set$date <- ymd(Sys.Date())
-panel.set$month <- month(panel.set$date)
-panel.set$year  <- year(panel.set$date)
+panel.set$date <- as.character(Sys.Date())
+panel.set$date <- ymd(panel.set$date)
+
+panel.set$month <- as.character(month(panel.set$date))
+panel.set$year  <- as.character(year(panel.set$date))
+
+panel.set$date <- NULL
+panel.set$date <- as.character(strftime(as.character(Sys.Date()), "%m/%d/%Y"))
+
 panel.set <- data.frame(panel.set)
 
 panel.set <- panel.set[,wbc.archive.order]
+panel.set[is.na(panel.set)] <- ""
+
 
 #Output new load data set
-
-dbWriteTable(con , "wbc_load_table_test", panel.set, overwrite = TRUE, row.names = FALSE)
-dbSendQuery(con, 'INSERT IGNORE INTO wbc_archive_test SELECT * FROM wbc_load_table_test')
-
-
+if(dev.environment == "Production")
+{
+  dbWriteTable(con , "wbc_load_table", panel.set, overwrite = TRUE, row.names = FALSE)
+  dbSendQuery(con, 'INSERT IGNORE INTO wbc_archive SELECT * FROM wbc_load_table')
+} else
+{
+  dbWriteTable(con , "wbc_load_table_test", panel.set, overwrite = TRUE, row.names = FALSE)
+  dbSendQuery(con, 'INSERT IGNORE INTO wbc_archive_test SELECT * FROM wbc_load_table_test')
+}
 
 
 ####################################################################################################
@@ -107,23 +119,24 @@ wbc.archive <- dbGetQuery(con, "SELECT
         Q2A1_mfg,
         Q2A2_mfg,
         date
-      FROM wbc_archive;")
+      FROM wbc_archive_test;")
 
+wbc.archive$States <- tolower(wbc.archive$States)
+wbc.archive$States <- capitalize(wbc.archive$States)
+wbc.archive$date <- mdy(wbc.archive$date)
+wbc.archive$month <- month(wbc.archive$date)
+
+current <- ymd(as.character(Sys.Date()))
+
+wbc.archive$diff <-  current - wbc.archive$date 
+wbc.archive <- wbc.archive[order(wbc.archive$diff),]
 
 ####################################################################################################
 
-# generateImportPanel <- function()
-# {
+generateImportPanel <- function()
+{
 
-    wbc.archive$States <- tolower(wbc.archive$States)
-    wbc.archive$States <- capitalize(wbc.archive$States)
-    wbc.archive$date <- mdy(wbc.archive$date)
-    wbc.archive$month <- month(wbc.archive$date)
-    
-    current <- ymd(as.character(Sys.Date()))
-    
-    wbc.archive$diff <-  current - wbc.archive$date 
-    wbc.archive <- wbc.archive[order(wbc.archive$diff),]
+
     
     
     #########################################################
@@ -191,15 +204,12 @@ wbc.archive <- dbGetQuery(con, "SELECT
     #Output panel here
 
     
-#}
+}
 
 
 
-
-
-
-# generateConsensusPanel <- function()
-# {
+generateConsensusPanel <- function()
+{
   
       data.columns <- c("Q1A1",
                         "Q2A1_ggr",
@@ -220,11 +230,9 @@ wbc.archive <- dbGetQuery(con, "SELECT
       wbc.archive[data.columns] <- sapply(wbc.archive[data.columns], function(x){specify_decimal(x, 1)})
       wbc.archive[data.columns] <- sapply(wbc.archive[data.columns], as.numeric)
       wbc.archive <- data.table(wbc.archive)
-      wbc.archive <- wbc.archive[!duplicated(wbc.archive, by = c("Organization","date","States")),]
-      
-      
-      
-      consensus <- wbc.archive[,list( Q1A1      = specify_decimal(mean(Q1A1, na.rm = TRUE),1),
+      this.wbc.archive <- wbc.archive[!duplicated(wbc.archive, by = c("Organization","States")),]
+
+      this.consensus <- this.wbc.archive[,list( Q1A1      = specify_decimal(mean(Q1A1, na.rm = TRUE),1),
                                       Q2A1_ggr  = specify_decimal(mean(Q2A1_ggr, na.rm = TRUE),1),
                                       Q4A1      = specify_decimal(mean(Q4A1, na.rm = TRUE),1),
                                       Q2A1      = specify_decimal(mean(Q2A1, na.rm = TRUE),1),
@@ -238,58 +246,77 @@ wbc.archive <- dbGetQuery(con, "SELECT
                                       Q3A2      = specify_decimal(mean(Q3A2, na.rm = TRUE),1),
                                       Q2A1_mfg  = specify_decimal(mean(Q2A1_mfg, na.rm = TRUE),1),
                                       Q2A2_mfg  = specify_decimal(mean(Q2A2_mfg, na.rm = TRUE),1)),
-                               by = list( States, month, date)]
-      
-      
-      current.date <- ymd(as.character(Sys.Date()))
-      consensus$diff <- current.date - consensus$date
-      consensus <- data.frame(consensus[order(consensus$diff)])
-      
-      #Types of consensus are this month == "consensus" and everything else is "last month consensus"
-      types.of.consensus <- unique(consensus$diff)
-      consensus$Organization <- NA
-      for(i in 1:length(types.of.consensus))
+                               by = list(States)]
+
+      current.month <- month(ymd(as.character(Sys.Date())))
+      last.wbc.archive <- subset(wbc.archive, month != current.month)
+      last.wbc.archive <- last.wbc.archive[!duplicated(last.wbc.archive, by = c("Organization","States")),]
+
+      last.consensus <- last.wbc.archive[,list( Q1A1      = specify_decimal(mean(Q1A1, na.rm = TRUE),1),
+                                           Q2A1_ggr  = specify_decimal(mean(Q2A1_ggr, na.rm = TRUE),1),
+                                           Q4A1      = specify_decimal(mean(Q4A1, na.rm = TRUE),1),
+                                           Q2A1      = specify_decimal(mean(Q2A1, na.rm = TRUE),1),
+                                           Q5A1      = specify_decimal(mean(Q5A1, na.rm = TRUE),1),
+                                           Q3A1      = specify_decimal(mean(Q3A1, na.rm = TRUE),1),
+                                           Q1A2      = specify_decimal(mean(Q1A2, na.rm = TRUE),1),
+                                           Q2A2_ggr  = specify_decimal(mean(Q2A2_ggr, na.rm = TRUE),1),
+                                           Q4A2      = specify_decimal(mean(Q4A2, na.rm = TRUE),1),
+                                           Q2A2      = specify_decimal(mean(Q2A2, na.rm = TRUE),1),
+                                           Q5A2      = specify_decimal(mean(Q5A2, na.rm = TRUE),1),
+                                           Q3A2      = specify_decimal(mean(Q3A2, na.rm = TRUE),1),
+                                           Q2A1_mfg  = specify_decimal(mean(Q2A1_mfg, na.rm = TRUE),1),
+                                           Q2A2_mfg  = specify_decimal(mean(Q2A2_mfg, na.rm = TRUE),1)),
+                                    by = list(States)]
+
+      this.consensus$Organization <- "Consensus"
+      last.consensus$Organization <- "Last Month Consensus"
+
+      consensus <- data.frame(rbind(this.consensus, last.consensus))
+
+
+      if(dev.environment == "Production")
       {
-        print(types.of.consensus[i])
-        if(i == 1) {consensus[which(consensus$diff == types.of.consensus[i]), "Organization"] <- "Consensus"}
-        if(i == 2) {consensus[which(consensus$diff == types.of.consensus[i]), "Organization"] <- "Last Month Consensus"}
-        if(i > 2) {consensus[which(consensus$diff == types.of.consensus[i]), "Organization"] <- "Old Consensus"}
+        dbWriteTable(con, "wbc_consensus", consensus, overwrite = TRUE, row.names = FALSE)
+      } else
+      {
+        dbWriteTable(con, "wbc_consensus_test", consensus, overwrite = TRUE, row.names = FALSE)
       }
-      
-      #Output Consensus Panel Here
-      
-      
-      #dbWriteTable(con, "wbc_consensus", consensus, overwrite = TRUE, row.names = FALSE)
-      #dbSendQuery(con, 'INSERT INTO wbc_old_archive ')
-      
-# }
+
+}
 
 
 ####################################################################################################
 # I should be able to take the archive and consensus table now, from the DB (that I just inserted)
 # and create the deployment table
 
-# generateDeploymentTable <- function()
-# {
+generateDeploymentTable <- function()
+{
 
-import.panel <- as.data.frame(import.panel)
-wbc.deployment       <- import.panel[deployment.table.names]
-wbc.deployment[data.columns] <- sapply(wbc.deployment[data.columns], as.numeric)
-wbc.deployment[data.columns] <- sapply(wbc.deployment[data.columns], function(x){specify_decimal(x, 1)})
+  import.panel <- as.data.frame(import.panel)
+  wbc.deployment       <- import.panel[deployment.table.names]
+  wbc.deployment[data.columns] <- sapply(wbc.deployment[data.columns], as.numeric)
+  wbc.deployment[data.columns] <- sapply(wbc.deployment[data.columns], function(x){specify_decimal(x, 1)})
+  
+  consensus.deployment <- consensus[deployment.table.names]
+  
+  wbc.deployment <- rbind(wbc.deployment, consensus.deployment) 
+  #wbc.deployment[which(wbc.deployment[data.columns] == " NA"),data.columns] <- ""
+  cleaned.data.columns <- sapply(wbc.deployment[,data.columns], function(x){
+    gsub(" NA|NaN|  NaN","",x)
+    #wbc.deployment[grepl("(?i)na", x) == "TRUE",] <- ""
+  })
+  
+  wbc.deployment.v2 <- wbc.deployment
+  wbc.deployment.v2[,data.columns] <- cleaned.data.columns
+  
+  if(dev.environment == "Production")
+  {
+    dbWriteTable(con, "wbc_deployment", wbc.deployment.v2, row.names = FALSE, overwrite = TRUE)
+  }else
+  {
+    dbWriteTable(con, "wbc_deployment_test", wbc.deployment.v2, row.names = FALSE, overwrite = TRUE)
+  }
+    
+}
 
-consensus.deployment <- consensus[deployment.table.names]
-
-wbc.deployment <- rbind(wbc.deployment, consensus.deployment) 
-#wbc.deployment[which(wbc.deployment[data.columns] == " NA"),data.columns] <- ""
-cleaned.data.columns <- sapply(wbc.deployment[,data.columns], function(x){
-  gsub(" NA|NaN|  NaN","",x)
-  #wbc.deployment[grepl("(?i)na", x) == "TRUE",] <- ""
-})
-
-wbc.deployment.v2 <- wbc.deployment
-wbc.deployment.v2[,data.columns] <- cleaned.data.columns
-
-#dbWriteTable(con, "wbc_deployment", wbc.deployment.v2, row.names = FALSE, overwrite = TRUE)
-
-#}
 

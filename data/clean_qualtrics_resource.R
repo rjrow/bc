@@ -258,3 +258,16 @@ deployment.table.names <- c(
   "Q2A1_mfg",
   "Q2A2_mfg")
 
+states.consensus <- c("Arizona",
+	"California",
+	"Colorado",
+	"Idaho",
+	"Montana",
+	"Nevada",
+	"New mexico",
+	"Oregon",
+	"Texas",
+	"Utah",
+	"Washington",
+	"Wyoming")
+
