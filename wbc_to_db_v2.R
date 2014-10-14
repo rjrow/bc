@@ -133,11 +133,8 @@ wbc.archive <- wbc.archive[order(wbc.archive$diff),]
 
 ####################################################################################################
 
-generateImportPanel <- function()
-{
-
-
-    
+# generateImportPanel <- function()
+# {
     
     #########################################################
     # wbc.archive to qualtrics panel
@@ -150,6 +147,8 @@ generateImportPanel <- function()
                                                          "PrimaryEmail",
                                                          "States",
                                                          "Organization"))
+
+    wbc.archive.melt$States <- tolower(wbc.archive.melt$States)
     
     
     states <- unique(wbc.archive$States)
@@ -200,11 +199,13 @@ generateImportPanel <- function()
     import.panel.v2[,question.list] <- sapply(import.panel.v2[,question.list], function(x) {
       specify_decimal(x, 1)
     })
-    
+
+
     #Output panel here
+    write.csv(import.panel.v2, file = "import_qualtrics_panel.csv", row.names = FALSE)
 
     
-}
+# }
 
 
 
