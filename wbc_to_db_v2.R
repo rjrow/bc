@@ -50,6 +50,10 @@ panel.set <- panel.set[,wbc.archive.order]
 panel.set[is.na(panel.set)] <- ""
 
 
+panel.set$tot.check <- apply(panel.set[,questions.new], 1, paste , collapse = "")
+panel.set <- subset(panel.set, tot.check != "", select = -c(tot.check))
+
+
 #Output new load data set
 if(dev.environment == "Production")
 {
@@ -133,8 +137,8 @@ wbc.archive <- wbc.archive[order(wbc.archive$diff),]
 
 ####################################################################################################
 
-# generateImportPanel <- function()
-# {
+generateImportPanel <- function()
+{
     
     #########################################################
     # wbc.archive to qualtrics panel
@@ -149,7 +153,6 @@ wbc.archive <- wbc.archive[order(wbc.archive$diff),]
                                                          "Organization"))
 
     wbc.archive.melt$States <- tolower(wbc.archive.melt$States)
-    
     
     states <- unique(wbc.archive$States)
     import.panel <- dcast(wbc.archive.v1, FirstName + 
@@ -190,8 +193,7 @@ wbc.archive <- wbc.archive[order(wbc.archive$diff),]
     
     import.panel <- data.table(import.panel)
     names(import.panel)[names(import.panel) == "new mexico"] <- "new.mexico"
-    
-    
+
     import.panel.v2 <- merge( wbc.panelists.v1, import.panel.v1, by = c("PrimaryEmail","Organization"), all.x = TRUE)
     question.list <- as.character(names(import.panel.v2))
     question.list <- question.list[grepl("Q", question.list)]
@@ -200,12 +202,9 @@ wbc.archive <- wbc.archive[order(wbc.archive$diff),]
       specify_decimal(x, 1)
     })
 
-
     #Output panel here
     write.csv(import.panel.v2, file = "import_qualtrics_panel.csv", row.names = FALSE)
-
-    
-# }
+}
 
 
 
@@ -271,9 +270,7 @@ generateConsensusPanel <- function()
 
       this.consensus$Organization <- "Consensus"
       last.consensus$Organization <- "Last Month Consensus"
-
       consensus <- data.frame(rbind(this.consensus, last.consensus))
-
 
       if(dev.environment == "Production")
       {

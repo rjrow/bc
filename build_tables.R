@@ -1,6 +1,5 @@
-
 library(reshape2)
-library(qdap)
+#library(qdap)
 library(data.table)
 library(plyr)
 
@@ -10,7 +9,7 @@ library(plyr)
 
 cwd <- getwd()
 
-wbc.data.path <- file.path(cwd, "data","qualtrics_pull_wbc.csv")
+wbc.data.path <- file.path(cwd, "data","qualtrics_pull_wbc_03_11_2014.csv")
 states.data.path <- file.path(cwd, "data","states.csv")
 resources.path <- file.path(cwd,"data","clean_qualtrics_resource.R")
 config.path <- file.path(cwd, "config.R")
