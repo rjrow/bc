@@ -4,10 +4,21 @@ library(reshape2)
 library(Hmisc)
 
 
-#TODO:
-# 
-#dbWriteTable(con, "wbc_deployment", wbc.deployment.v2, row.names = FALSE, overwrite = TRUE)
-# Build out deployment table
+
+data.columns <- c("Q1A1",
+                  "Q2A1_ggr",
+                  "Q4A1",
+                  "Q2A1",
+                  "Q5A1",
+                  "Q3A1",
+                  "Q1A2",
+                  "Q2A2_ggr",
+                  "Q4A2",
+                  "Q2A2",
+                  "Q5A2",
+                  "Q3A2",
+                  "Q2A1_mfg",
+                  "Q2A2_mfg")
 
 
 ####################################################################################################
@@ -30,10 +41,14 @@ info.set <- dbGetQuery(con, "SELECT FirstName,
                    States, 
                    Organization FROM wbc_archive;")
 
+
 info.set <- data.table(info.set)
 info.set <- unique(info.set)
 
-panel.set <- merge(info.set, survey.data.out, by = c("PrimaryEmail"))
+
+panel.set <- merge(info.set, survey.data.out, by = c("PrimaryEmail","States"), allow.cartesian = TRUE)
+
+
 
 panel.set$date <- as.character(Sys.Date())
 panel.set$date <- ymd(panel.set$date)
@@ -136,9 +151,9 @@ wbc.archive$diff <-  current - wbc.archive$date
 wbc.archive <- wbc.archive[order(wbc.archive$diff),]
 
 ####################################################################################################
-
-generateImportPanel <- function()
-{
+# 
+# generateImportPanel <- function()
+# {
     
     #########################################################
     # wbc.archive to qualtrics panel
@@ -188,7 +203,7 @@ generateImportPanel <- function()
     import.panel[,states][is.na(import.panel[states])] <- 0
     import.panel[,states][((import.panel[states]) != 0)] <- 1
     
-    
+
     import.panel[,states] <- sapply(import.panel[,states], as.numeric)
     
     import.panel <- data.table(import.panel)
@@ -204,12 +219,12 @@ generateImportPanel <- function()
 
     #Output panel here
     write.csv(import.panel.v2, file = "import_qualtrics_panel.csv", row.names = FALSE)
-}
+#}
 
 
 
-generateConsensusPanel <- function()
-{
+# generateConsensusPanel <- function()
+# {
   
       data.columns <- c("Q1A1",
                         "Q2A1_ggr",
@@ -280,15 +295,15 @@ generateConsensusPanel <- function()
         dbWriteTable(con, "wbc_consensus_test", consensus, overwrite = TRUE, row.names = FALSE)
       }
 
-}
+#}
 
 
 ####################################################################################################
 # I should be able to take the archive and consensus table now, from the DB (that I just inserted)
 # and create the deployment table
 
-generateDeploymentTable <- function()
-{
+# generateDeploymentTable <- function()
+# {
 
   import.panel <- as.data.frame(import.panel)
   wbc.deployment       <- import.panel[deployment.table.names]
@@ -315,6 +330,6 @@ generateDeploymentTable <- function()
     dbWriteTable(con, "wbc_deployment_test", wbc.deployment.v2, row.names = FALSE, overwrite = TRUE)
   }
     
-}
+#}
 
 

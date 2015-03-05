@@ -182,21 +182,25 @@ exclude.columns <- c("arizona_Q1A1",
 "END")
 
 
+questions <- c("Current...Personal.Income",
+               "Retail.Sales"        ,
+               "Wage...Salary.Employment",
+               "Population.Growth"        ,
+               "Single.family.Housing.Permits",
+               "Gross.Gaming.Revenue"         ,
+               "Manufacturing.Employment")
 
-questions <- c("2014.Current...Personal.Income",
-               "2014.Retail.Sales"        ,
-               "2014.Wage...Salary.Employment",
-               "2014.Population.Growth"        ,
-               "2014.Single.family.Housing.Permits",
-               "2014.Gross.Gaming.Revenue"         ,
-               "2014.Manufacturing.Employment"    ,
-               "2015.Current...Personal.Income"    ,
-               "2015.Retail.Sales"                 ,
-               "2015.Wage...Salary.Employment"     ,
-               "2015.Population.Growth"            ,
-               "2015.Single.family.Housing.Permits" ,
-               "2015.Gross.Gaming.Revenue"        ,
-               "2015.Manufacturing.Employment")
+
+year.beg <- as.numeric(format(Sys.Date(), "%Y"))
+year.end <- year.beg + 1
+
+questions.beg <- paste0(year.beg, ".", questions)
+questions.end <- paste0(year.end, ".", questions)
+
+questions <- c(questions.beg, questions.end)
+
+
+
 
 questions.new <- c(  "Q1A1",
                      "Q2A1",
@@ -270,4 +274,25 @@ states.consensus <- c("Arizona",
 	"Utah",
 	"Washington",
 	"Wyoming")
+
+
+dout.names <- c("Organization","States",
+"Q1A1",
+"Q1A2",
+"Q2A1",
+"Q2A2",
+"Q3A1",
+"Q3A2",
+"Q4A1",
+"Q4A2",
+"Q5A1",
+"Q5A2",
+"Q2A1_ggr",
+"Q2A2_ggr",
+"Q2A1_mfg",
+"Q2A2_mfg",
+"date",
+"month",
+"year")
+
 

@@ -14,7 +14,7 @@ con <- dbConnect(MySQL(),
 
 
 # Initially load in the greater phoenix data and send off to db
-greater.phoenix <- read.csv("greater_phoenix_data.csv")
+greater.phoenix <- read.csv("greater_phoenix_data_1_3_2015.csv")
 dbWriteTable(con, "gpbc_panelists_updated" , greater.phoenix, overwrite = TRUE)
 
 on.exit(dbDisconnect(con))
